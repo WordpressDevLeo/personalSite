@@ -381,7 +381,7 @@ body{
         </div>
 
         <div class="profilePictureWrapper">
-                <img src="profilePicture.jpg" alt="a picture of myself!">
+                <img src="images/profilePicture.jpg" alt="a picture of myself!">
           
         </div>
         <div class="previewPictureWrapper">
@@ -394,7 +394,7 @@ body{
             <div onmouseenter="previewPictureTransform()" id="previewPicture_leftDown_id" class="previewPicture leftDown">
                 <img src="smallPicture.jpg" >
             </div>-->
-            <img src="smallPicture.jpg">
+            <img src="images/smallPicture.jpg">
         </div>
 
         <div class="secondTitleWrapper">
@@ -408,7 +408,7 @@ body{
             <div class="mostRecentAdventure_section" id="mostRecentAdventure_section_id">
 
                 <div class="mostRecentAdventure_imageWrapper">
-                    <img src="bigPicture2.jpg" alt="my finest foto!">
+                    <img src="images/bigPicture2.jpg" alt="my finest foto!">
                 </div>
                 <div class="mostRecentAdventure_textWrapper">
                     <span class="mostRecentAdventure_text"> This picture is from my most recent adventure into the alps. This is just an example picture, feel free to ask for more!</span>
@@ -429,25 +429,25 @@ body{
     <div class="whatISell_imageSlideWrapper" id="whatISell_imageSlideWrapper_id">
                     
                     <div class="slide" id="slide1_id">
-                        <img src="slide1.jpg" alt="some beautiful images I would like to sell!">
+                        <img src="images/slide1.jpg" alt="some beautiful images I would like to sell!">
                     </div>
                     <div class="slide" id="slide2_id">
-                        <img src="slide2.jpg" alt="">
+                        <img src="images/slide2.jpg" alt="">
                     </div>
                     <div class="slide" id="slide3_id">
-                        <img src="slide3.jpg" alt="">
+                        <img src="images/slide3.jpg" alt="">
                     </div>
                     <div class="slide" id="slide4_id">
-                        <img src="slide4.jpg" alt="">
+                        <img src="images/slide4.jpg" alt="">
                     </div>
                     <div class="slide" id="slide5_id">
-                        <img src="slide5.jpg" alt="">
+                        <img src="images/slide5.jpg" alt="">
                     </div>
                     <div class="slide" id="slide6_id">
-                        <img src="slide6.jpg" alt="">
+                        <img src="images/slide6.jpg" alt="">
                     </div>
                     <div class="slide" id="slide7_id">
-                        <img src="slide7.jpg" alt="">
+                        <img src="images/slide7.jpg" alt="">
                     </div>
                     <div class="whatISell_imageSlide_buttonLeftWrapper" onclick="swipeToPreviousContainer()">
                         <div class="whatISell_imageSlide_buttonLeft"> </div>
@@ -470,9 +470,9 @@ body{
                     <span class="contactMe_text"> Contact</span>
                 </div>
                 <div class="iconWrapper">
-                    <img src="twitterIcon.png" alt="twitter Link">
-                    <img src="facebookIcon.png" alt="facebook Link">
-                    <img src="instagramIcon.png" alt="instagram Link">
+                    <img src="images/twitterIcon.png" alt="twitter Link">
+                    <img src="images/facebookIcon.png" alt="facebook Link">
+                    <img src="images/instagramIcon.png" alt="instagram Link">
                 </div>
             </div>
             
@@ -488,13 +488,13 @@ body{
         /*autobahn*/
         function scrollToSection(index){
             if(index == 1) {
-               document.getElementById("whatISell_section_id").scrollIntoView({
+               document.getElementById("mostRecentAdventure_section_id").scrollIntoView({
             behavior: 'smooth',
             block: 'center'
             });
             }
             else if(index == 2){
-                document.getElementById("mostRecentAdventure_section_id").scrollIntoView({
+                document.getElementById("whatISell_section_id").scrollIntoView({
             behavior: 'smooth',
             block: 'center'
             });
