@@ -1,0 +1,550 @@
+<html lang="en-US">
+    <head>
+        <style>
+            /*have to find out how to make reveal effect*/
+
+
+body{
+    background-color: black;
+    /*610C9F*/
+}
+.mostRecentAdventure_Section{
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+    gap: max(10px, 5vw);
+    min-height: 50vh;
+    margin-bottom: 10vh;
+}
+.mostRecentAdventure_text{
+    color: wheat;
+    font-size: calc(15px + 1.5vw);
+}
+.mostRecentAdventure_textWrapper{
+    width: 40vw;
+    min-width: 400px;
+    align-self: center;
+}
+.mostRecentAdventure_imageWrapper{
+    width: 50vw;
+    min-width: 400px;
+    display:flex;
+    justify-content: center;
+    border-radius: 10px;
+    
+}
+.mostRecentAdventure_imageWrapper img{
+    width: 100%;
+    object-fit: contain;
+    position: relative;
+    border-radius: 10px;
+    
+    
+}
+
+
+
+
+.whatISell_imageSlideWrapper{
+    display: flex;
+
+    min-width: 512px;
+    min-height: 512px;
+    height: 50vw;
+    width: 50vw;
+    overflow-x: scroll;
+    flex-direction: row;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+.slide{
+    
+    position: relative;
+    align-self: center;
+
+    height: 50vw;
+    width: 50vw;
+    min-width: 100%;
+    min-height: 100%;
+    /*why is min-width/height affecting the alignment of pictures when the bigger value
+    from 50vw takes over? unlike when you use 100%...*/
+    display: flex;
+    scroll-behavior: smooth;
+    scroll-snap-align: center;
+    /*appereantly scroll snap fixed issur*/
+}
+.slide img{
+    min-width: 512px;
+    min-height: 512px;
+    /*needed so x-scrollbar doesn't reduce size of image due to slide min-height/width set to 100% instead of 512px*/
+
+    object-fit: cover;
+    
+}
+
+
+.whatISell_imageSlide_buttonLeft{
+    clip-path: polygon(10% 10%, 55% 50%, 10% 90%, 40% 90%, 85% 50%, 40% 10%);
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    transform: scaleX(-1);
+}
+
+.whatISell_imageSlide_buttonLeftWrapper{
+    position: absolute;
+    align-self: center;
+    background-color: antiquewhite;
+    min-width: 40px;
+    min-height: 80px;
+    opacity: 0.4;
+    transition: all 0.3s ease-out;
+}
+.whatISell_imageSlide_buttonRightWrapper{
+    align-self: center;
+    position: absolute;
+    margin-left: max(512px, 50vw);
+    /* remember right:0 doesn't work with absolutly positioned elements inside flexbox
+    this solution works great!*/
+    transform: translate(-100%,0);
+    background-color: antiquewhite;
+    min-width: 40px;
+    min-height: 80px;
+    opacity: 0.4;
+    transition: all 0.1s;
+}
+.whatISell_imageSlide_buttonRight{
+    clip-path: polygon(10% 10%, 55% 50%, 10% 90%, 40% 90%, 85% 50%, 40% 10%);
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+}
+.whatISell_imageSlide_buttonLeftWrapper:hover {
+    opacity: 0.7;
+}
+.whatISell_imageSlide_buttonRightWrapper:hover {
+    opacity: 0.7;
+}
+.whatISell_title{
+    color: antiquewhite;
+    font-size: calc(40px + 3.5vw);
+}
+.whatISell_sellingPoints{
+
+    color: antiquewhite;
+    font-size: calc(15px + 1.5vw);
+}
+.whatISell_textWrapper{
+    min-width: 512px;
+    max-width: 30vw;
+    align-self: center;
+}
+.whatISell_section{
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+    gap: max(10px, 5vw);
+}
+
+
+
+
+
+
+.topbar{
+    width: 100%;
+    height: 10vh;
+    background-color: antiquewhite;
+    top:0;
+
+    color: black;
+    font-family: "Liberation Serif";
+    display: flex;
+    justify-content: space-between;
+    font-size: calc(20px + 2vw);
+    min-height: 60px;
+}
+
+.topbar_button{
+    margin: 1vh;
+    transition: all 0.2s;
+}
+.topbar_button:hover{
+    color: pink;
+}
+
+
+.profilePicture img:hover{
+    transform: rotate(-2deg);
+
+}
+.titleWrapper{
+    width:  calc(50vw - 20px);
+    height: 50vh;
+    min-height: 512px;
+}
+/*autobahn*/
+.secondTitleWrapper{
+    width:  calc(50vw - 20px);
+    height: 50vh;
+    min-height: 500px;
+    display: flex;
+}
+.mainTitle{
+    font-size: calc(30px + 7vw);
+    font-family: "Arial Black";
+    color: white;
+}
+.secondTitle{
+    font-size: calc(30px + 3vw);
+    font-family: "Serif";
+    color: white;
+    margin: 50px;
+}
+
+/*.previewPicture{
+    position:absolute;
+    align-self: center;
+    width: 40vw;
+}*/
+.previewPictureWrapper{
+    width:  calc(50vw - 20px);
+    height: 50vh;
+    display: flex;
+    min-width:  512px;
+    min-height: 512px;
+    
+}
+.previewPictureWrapper img{
+    object-fit: contain;
+    margin-left: auto;
+    margin-bottom: auto;
+    width:  512px;
+    height: 512px;
+}
+
+.profilePictureWrapper{
+    width:  calc(50vw - 20px);
+    height: 50vh;
+    min-width:  512px;
+    min-height: 512px;
+    display: flex;
+}
+.profilePictureWrapper img{
+    clip-path: polygon( 70% 0%, 0% 65% , 30% 100%, 80% 93% );
+    width:  512px;
+    height: 512px;
+    object-fit: contain;
+    transition: all 1s ease-out;
+    margin-top: auto;
+    margin-right: auto;
+    border: 1px solid red;
+}
+.topSection{
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    align-items: center;
+}
+
+
+@media (max-width: 1100px) {
+    .topSection{
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    align-items: center;
+}
+              
+                    .titleWrapper{
+                        width:  100%;
+                        height: 30%;
+                        min-height: 30%;
+                    }
+                    /*autobahn*/
+                    .secondTitleWrapper{
+                        width:  100%;
+                        height: 30%;
+                        min-height: 30%;
+                        display: flex;
+                    }
+                    .secondTitle{
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+
+                    /*.previewPicture{
+                        position:absolute;
+                        align-self: center;
+                        width: 40vw;
+                    }*/
+                    .previewPictureWrapper{
+                        width:  calc(50% - 10px);
+                        height: calc(50% - 10px);
+                        display: flex;
+                        min-width:  0;
+                        min-height: 0;
+                        
+                    }
+                    .previewPictureWrapper img{
+                        object-fit: contain;
+                        margin-left: auto;
+                        margin-bottom: auto;
+                        width:  100%;
+                        height: 100%;
+                    }
+
+                    .profilePictureWrapper{
+                        width:  calc(50% - 10px);
+                        height: calc(50% - 10px);
+                        min-width:  0;
+                        min-height: 0;
+                        display: flex;
+                    }
+                    .profilePictureWrapper img{
+                        /*clip-path: polygon( 70% 0%, 0% 65% , 30% 100%, 80% 93% );*/
+                        width:  100%;
+                        height: 100%;
+                        object-fit: contain;
+                        transition: all 1s ease-out;
+                        margin-top: auto;
+                        margin-right: auto;
+                        border: 1px solid red;
+                    }
+
+
+}
+
+.contactMe_section{
+    margin-top: 10vh;
+    background-color: brown;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 10vh;
+}
+.iconWrapper{
+    display:flex;
+    gap: 5vw;
+    justify-content: center;
+}
+.iconWrapper img{
+    max-width: 50px;
+}
+.contactMe_textWrapper{
+    justify-content: center;
+    display:flex;
+    margin: 50px;
+}
+.contactMe_text{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: calc(30px + 3vw);
+}
+
+
+</style>
+    </head>
+
+
+
+    <body>
+        <div class="topbar">
+            <span onclick="scrollToSection(1)"  class="topbar_button">Most Recent</span>
+            <span onclick="scrollToSection(2)"  class="topbar_button">What I sell</span>
+            <span onclick="scrollToSection(3)"  class="topbar_button">Contact</span>
+        </div>
+        <div class="section topSection" id="topSection_id">
+            
+        <div class="titleWrapper">
+            <span class="mainTitle">Sarah Morgan</span>  
+            <!--autobahn-->
+        </div>
+
+        <div class="profilePictureWrapper">
+                <img src="profilePicture.jpg" alt="a picture of myself!">
+          
+        </div>
+        <div class="previewPictureWrapper">
+            <!--<div onmouseenter="previewPictureTransform()" id="previewPicture_main_id"class="previewPicture main">
+                <img  src="smallPicture.jpg" >
+            </div>
+            <div onmouseenter="previewPictureTransform()" id="previewPicture_rightUp_id" class="previewPicture rightUp">
+                <img src="smallPicture.jpg">
+            </div>
+            <div onmouseenter="previewPictureTransform()" id="previewPicture_leftDown_id" class="previewPicture leftDown">
+                <img src="smallPicture.jpg" >
+            </div>-->
+            <img src="smallPicture.jpg">
+        </div>
+
+        <div class="secondTitleWrapper">
+                <span class="secondTitle"> professional photographer</span>
+        </div>
+
+            </div>
+        
+        </div>
+
+            <div class="mostRecentAdventure_section" id="mostRecentAdventure_section_id">
+
+                <div class="mostRecentAdventure_imageWrapper">
+                    <img src="bigPicture2.jpg" alt="my finest foto!">
+                </div>
+                <div class="mostRecentAdventure_textWrapper">
+                    <span class="mostRecentAdventure_text"> This picture is from my most recent adventure into the alps. This is just an example picture, feel free to ask for more!</span>
+                </div>
+
+            </div>
+
+            <div class="whatISell_section" id="whatISell_section_id">
+                <!-- make flex direction inverted for this so maybe it goes on top when space too small-->
+                <div class="whatISell_textWrapper">
+                    <span class="whatISell_title">What I sell </br> </span>
+                    <span class="whatISell_sellingPoints">These are what some of my pictures look like. Feel free to contact me and ask for specific
+                        things which should be in a picture. I have a huge number of professional photos in which I definetly
+                        would have something you desire!
+                    </span>
+                </div>
+             
+    <div class="whatISell_imageSlideWrapper" id="whatISell_imageSlideWrapper_id">
+                    
+                    <div class="slide" id="slide1_id">
+                        <img src="slide1.jpg" alt="some beautiful images I would like to sell!">
+                    </div>
+                    <div class="slide" id="slide2_id">
+                        <img src="slide2.jpg" alt="">
+                    </div>
+                    <div class="slide" id="slide3_id">
+                        <img src="slide3.jpg" alt="">
+                    </div>
+                    <div class="slide" id="slide4_id">
+                        <img src="slide4.jpg" alt="">
+                    </div>
+                    <div class="slide" id="slide5_id">
+                        <img src="slide5.jpg" alt="">
+                    </div>
+                    <div class="slide" id="slide6_id">
+                        <img src="slide6.jpg" alt="">
+                    </div>
+                    <div class="slide" id="slide7_id">
+                        <img src="slide7.jpg" alt="">
+                    </div>
+                    <div class="whatISell_imageSlide_buttonLeftWrapper" onclick="swipeToPreviousContainer()">
+                        <div class="whatISell_imageSlide_buttonLeft"> </div>
+                    </div>
+             
+                    <div class="whatISell_imageSlide_buttonRightWrapper" id="whatISell_imageSlide_buttonLeftWrapper_id" onclick="swipeToNextContainer()"> 
+                        <div class="whatISell_imageSlide_buttonRight"> </div>
+                    </div>
+                
+            
+    </div>
+    
+
+
+
+            </div>
+
+            <div class="contactMe_section" id="contactMe_section_id">
+                <div class="contactMe_textWrapper"> 
+                    <span class="contactMe_text"> Contact</span>
+                </div>
+                <div class="iconWrapper">
+                    <img src="twitterIcon.png" alt="twitter Link">
+                    <img src="facebookIcon.png" alt="facebook Link">
+                    <img src="instagramIcon.png" alt="instagram Link">
+                </div>
+            </div>
+            
+
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+        <script>
+            
+       /* jQuery("mainTitle").fitText(0.38);*/
+
+        /*autobahn*/
+        function scrollToSection(index){
+            if(index == 1) {
+               document.getElementById("whatISell_section_id").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+            });
+            }
+            else if(index == 2){
+                document.getElementById("mostRecentAdventure_section_id").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+            });
+            }
+            else if(index == 3){
+                document.getElementById("contactMe_section_id").scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+            });
+            }
+        }   
+
+        var slideContent = document.getElementById("whatISell_imageSlideWrapper_id");
+        var slide_allimg = slideContent.getElementsByTagName('img');
+        var imgInView = 0;
+
+        function swipeToNextContainer(){
+            /*find img in View position in array then +1?
+            no too hard for now it works*/
+            imgInView++;            
+            if (imgInView == slide_allimg.length){
+                imgInView=0;
+            }
+            
+            slide_allimg[imgInView].scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+            });
+            
+            
+
+        }
+        function swipeToPreviousContainer(){
+            /*find img in View position in array then +1?
+            no too hard for now it works. want to make only x axis move but haven't found plausible solution*/
+            if (imgInView == 0){
+                imgInView=slide_allimg.length;
+            }
+            imgInView--;
+            slide_allimg[imgInView].scrollIntoView({
+            behavior: 'smooth',
+            block: 'center' 
+            });
+            
+            
+
+        }
+        </script>
+
+
+    </body>
+
+</html>
